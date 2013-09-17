@@ -11,8 +11,8 @@ Last-Modified: Tue, 02 Jul 2013 02:58:26 GMT
 ### ETag
 ETag: "d213bdbb34ace1:0"
 ### HTTP规范
-<http://www.w3.org/Protocols/HTTP/1.0/spec.html#Expires>
-<http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13>
+- <http://www.w3.org/Protocols/HTTP/1.0/spec.html#Expires>
+- <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13>
 ### code
 	
 
