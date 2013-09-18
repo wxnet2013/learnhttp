@@ -13,6 +13,7 @@ function handler(req, res) {
 	var maxAge =  60*60*24*365;
 	//Cache-Control: max-age=31536000
 	res.setHeader('Cache-Control', 'max-age=' + maxAge);
+	//res.setHeader('Cache-Control', 'max-age=30');
 	
 	//Content-Length: 14
 	res.setHeader('Content-Length', content.length);
