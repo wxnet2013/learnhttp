@@ -55,6 +55,7 @@ Cache-Control的max-age优先级高于Expires(至少对于Apache是这样的）�
 ## 服务端处理缓存
 ### Last-Modified
 Last-Modified: Tue, 02 Jul 2013 02:58:26 GMT
+FireFox 下 刷新回去请求服务器、但是回车不会发起请求。
 
 	function handler(req, res) {
 		var content = 'alert(\'Last-Modified\');',
@@ -79,6 +80,31 @@ Last-Modified: Tue, 02 Jul 2013 02:58:26 GMT
 	
 ### ETag
 ETag: "d213bdbb34ace1:0"
+
+FireFox 下 刷新按钮和回车都去请求服务器。
+
+	function handler(req, res) {
+		var content = 'alert(\'ETag\');',
+			contentType =  'application/x-javascript; charset=utf-8',
+			ETag = '5b-4be051d263600',
+			ifNoneMatch = 'If-None-Match'.toLowerCase();
+		
+			//Content-Type: application/x-javascript; charset=utf-8
+			res.setHeader('Content-Type', contentType);
+			//ETag: "5b-4be051d263600"
+			res.setHeader('ETag', ETag);
+	
+			if(req.headers[ifNoneMatch] == ETag){
+				res.setHeader('Content-Length', 0);
+				res.writeHead(304, "Not Modified");
+				res.end();
+			} else {
+				//Content-Length: 14
+				res.setHeader('Content-Length', content.length);
+				res.end(content);
+			}
+	}
+
 ### HTTP规范
 - <http://www.w3.org/Protocols/HTTP/1.0/spec.html#Expires>
 - <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13>
