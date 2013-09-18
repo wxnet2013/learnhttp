@@ -105,11 +105,9 @@ FireFox 下 刷新按钮和回车都去请求服务器。
 			}
 	}
 
-### HTTP规范
-- <http://www.w3.org/Protocols/HTTP/1.0/spec.html#Expires>
-- <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13>
 
-### code
+
+## code
 
 	function handler(req, res) {
 		var content = 'alert(\'Cache\');',
@@ -138,6 +136,10 @@ FireFox 下 刷新按钮和回车都去请求服务器。
 			res.end(content);
 		}
 	}
+	
+## HTTP规范
+	- <http://www.w3.org/Protocols/HTTP/1.0/spec.html#Expires>
+	- <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13>
 	
 
 
