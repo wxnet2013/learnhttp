@@ -26,6 +26,23 @@ FireFox下，按刷新按钮会请求服务器，地址栏按回车不会请求
 Cache-Control: max-age=30
 FireFox下，按刷新按钮会直接请求服务器，地址栏按回车不会请求，30秒后按回车会请求服务器。
 
+	function handler(req, res) {
+		var content = 'alert(\'haha\');';
+	
+		var contentType =  'application/x-javascript; charset=utf-8';
+		//Content-Type: application/x-javascript; charset=utf-8
+		res.setHeader('Content-Type', contentType);
+	
+		var maxAge =  60*60*24*365;
+		//Cache-Control: max-age=31536000
+		res.setHeader('Cache-Control', 'max-age=' + maxAge);
+		//res.setHeader('Cache-Control', 'max-age=30');
+	
+		//Content-Length: 14
+		res.setHeader('Content-Length', content.length);
+		res.end(content);
+	}
+
 
 ### 总结
 Cache-Control的max-age优先级高于Expires，max-age会覆盖Expires的值。
