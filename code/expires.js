@@ -4,9 +4,7 @@ var http = require('http');
 
 function handler(req, res) {
 	
-	var content = 'alert(\'haha\');';
-	
-	
+	var content = 'alert(\'Expires\');';
 	var contentType =  'application/x-javascript; charset=utf-8';
 	//Content-Type: application/x-javascript; charset=utf-8
 	res.setHeader('Content-Type', contentType);

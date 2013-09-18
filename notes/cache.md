@@ -55,6 +55,28 @@ Cache-Control的max-age优先级高于Expires(至少对于Apache是这样的）�
 ## 服务端处理缓存
 ### Last-Modified
 Last-Modified: Tue, 02 Jul 2013 02:58:26 GMT
+
+	function handler(req, res) {
+		var content = 'alert(\'Last-Modified\');',
+			contentType =  'application/x-javascript; charset=utf-8',
+			lastModified = 'Tue, 17 Sep 2013 07:26:08 GMT',
+			ifModifiedSince = 'If-Modified-Since'.toLowerCase();
+		
+			//Content-Type: application/x-javascript; charset=utf-8
+			res.setHeader('Content-Type', contentType);
+			res.setHeader('Last-Modified', lastModified);
+	
+			if(req.headers[ifModifiedSince] == lastModified){
+				res.setHeader('Content-Length', 0);
+				res.writeHead(304, "Not Modified");
+				res.end();
+			}else {
+				//Content-Length: 14
+				res.setHeader('Content-Length', content.length);
+				res.end(content);
+			}
+	}
+	
 ### ETag
 ETag: "d213bdbb34ace1:0"
 ### HTTP规范

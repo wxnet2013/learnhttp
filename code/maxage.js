@@ -4,7 +4,7 @@ var http = require('http'),
 	PORT = 1337;
 
 function handler(req, res) {
-	var content = 'alert(\'haha\');';
+	var content = 'alert(\'Cache-Control: max-age=31536000\');';
 	
 	var contentType =  'application/x-javascript; charset=utf-8';
 	//Content-Type: application/x-javascript; charset=utf-8
