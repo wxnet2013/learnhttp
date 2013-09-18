@@ -1,5 +1,7 @@
 var http = require('http');
-http.createServer(function (req, res) {
+
+
+function handler(req, res) {
 	
 	var content = 'html code';
 	var contentType =  'text/plain';
@@ -26,5 +28,8 @@ http.createServer(function (req, res) {
 		res.end(content);
 	}
 	
-}).listen(1337, '127.0.0.1');
+}
+
+
+http.createServer(handler).listen(1337, '127.0.0.1');
 console.log('Server running at http://127.0.0.1:1337/');
