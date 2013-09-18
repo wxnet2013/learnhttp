@@ -4,6 +4,7 @@
 HTTP/1.0中定义
 Expires: Tue, 17 Sep 2013 15:55:58 GMT
 FireFox下，按刷新按钮会请求服务器，地址栏按回车不会请求
+	
 	function handler(req, res) {
 		var content = 'alert(\'haha\');';
 		var contentType =  'application/x-javascript; charset=utf-8';
