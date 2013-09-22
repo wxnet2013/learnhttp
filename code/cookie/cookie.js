@@ -10,13 +10,24 @@ function handler(req, res) {
 	var contentType =  'text/html; charset=utf-8';
 	res.setHeader('Content-Type', contentType);
 	
+	//会话Cookie
+	res.setHeader('Set-Cookie', '_session_=Ea2U9ib0_; domain=127.0.0.1; path=/');
 	
-	//Set-Cookie: key=value; domain=.domain.com; expires=Mon, 11-Oct-2019 16:00:00 GMT; path=/; HttpOnly
-	res.setHeader('Set-Cookie', '.DottextCookie=11; path=/; HttpOnly');
+	//持久化Cookie
+	//res.setHeader('Set-Cookie', 'unick=wxnet2013; domain=127.0.0.1; path=/; expires=Mon, 11-Oct-2019 16:00:00 GMT');
 	
-	//限定目录 仅 127.0.0.1/test 路径下可读
-	//res.setHeader('Set-Cookie', '.DottextCookie=11; path=/test; HttpOnly');
+	//限定为Http只读
+	//Set-Cookie: key=value; domain=127.0.0.1; path=/; HttpOnly
+	//res.setHeader('Set-Cookie', '_http=1; domain=127.0.0.1; path=/; HttpOnly');
 	
+	//限定域名 仅my.domain.com域名下生效
+	//res.setHeader('Set-Cookie', '_path_test=11; domain=my.domain.com; path=/test');
+	
+	//限定目录 仅 127.0.0.1/test 路径匹配后，设置cookie
+	//res.setHeader('Set-Cookie', '_path_test=11; domain=127.0.0.1; path=/test');
+	
+	//限定ssl
+	//res.setHeader('Set-Cookie', '_secure=1; domain=127.0.0.1; path=/; Secure');
 	
 	//Content-Length: 14
 	res.setHeader('Content-Length', content.length);
