@@ -1,13 +1,15 @@
 # HTTP压缩
-## 请求与响应头
-Accept-Encoding:gzip,deflate,sdch
-|压缩算法|chrome|
-|gzip|y|
-|deflate|y|
-|sdch|y|
+## 请求头
+Accept-Encoding: gzip,deflate,sdch
 
+chrome gzip,deflate,sdch
+firefox gzip,deflate
+ie gzip,deflate
+opera gzip,deflate
 
-content-encoding:gzip
+## 响应头
+content-encoding: gzip
+
 ## 代码
 
 	function handler(req, res) {
