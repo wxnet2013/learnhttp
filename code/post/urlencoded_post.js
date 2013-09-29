@@ -1,6 +1,7 @@
 //Content-Type: application/x-www-form-urlencoded 
 
 var http = require('http'),
+CRLF = '\r\n',
 //application/x-www-form-urlencoded
 body = encodeURI('a=1&b=2&c=中文'),
 options = {
@@ -32,5 +33,5 @@ var req = http.request(options, onResponse);
 req.on('error', onError);
 
 // write data to request body
-req.write(body + '\r\n');
+req.write(body + CRLF);
 req.end();
