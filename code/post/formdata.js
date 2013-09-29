@@ -14,6 +14,7 @@ Content-Type: image/jpeg
 
 ------WebKitFormBoundaryBcQ7Wg0fDGTnhDK2--
 */
+//Content-Type: application/x-zip-compressed  |  image/jpeg | text/plain
 body = [
 '--' + boundary + CRLF,
 'Content-Disposition: form-data; name="txt"' + CRLF + CRLF,
