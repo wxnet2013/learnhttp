@@ -1,4 +1,6 @@
 var http = require('http'), 
+	formidable = require('formidable'),
+	util = require('util'),
 	fs = require('fs'),
 	IP = '127.0.0.1', 
 	PORT = 1337;
@@ -44,6 +46,16 @@ function handlerPost(req,postData){
 
 function handler(req, res) {
 	if (req.method == 'POST') {
+		
+		var form = new formidable.IncomingForm();
+
+		form.parse(req, function(err, fields, files) {
+		   res.writeHead(200, {'content-type': 'text/plain'});
+		   res.write('received upload:\n\n');
+		   res.end(util.inspect({fields: fields, files: files}));
+		});
+		
+		/*
 		var body = '';
 	    req.on('data', function (data) {
 	    	body += data;
@@ -51,10 +63,19 @@ function handler(req, res) {
 	    req.on('end', function () {
 			//console.log(req);
 			//console.log(body);
-			handlerPost(req,body);
-			res.writeHead(200, "OK", {'Content-Type': 'text/plain'});
-			res.end();
+			//handlerPost(req,body);
+			var form = new formidable.IncomingForm();
+
+			form.parse(req, function(err, fields, files) {
+			   res.writeHead(200, {'content-type': 'text/plain'});
+			   res.write('received upload:\n\n');
+			   res.end(util.inspect({fields: fields, files: files}));
+			});
+				
+		//res.writeHead(200, "OK", {'Content-Type': 'text/plain'});
+		//res.end();
 	    });
+		*/
 	}
 }
 

@@ -55,7 +55,7 @@ var req = http.request(options, onResponse);
 req.on('error', onError);
 
 // write data to request body
-req.write(body + CRLF);
+req.write(body);
 
 //设置1M的缓冲区
 var fileStream = fs.createReadStream('1.jpg',{bufferSize:1024 * 1024});
