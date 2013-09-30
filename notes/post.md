@@ -25,3 +25,6 @@
 
 ## Content-Type: application/x-www-form-urlencoded 
 
+
+## 解析multipart/form-data获取得数据
+
